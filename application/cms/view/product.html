@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>产品展示 - {:site_config('title')}</title>
+    <meta name="Keywords" content="{:site_config('keywords')}">
+    <meta name="Description" content="{:site_config('description')}">
+    {include file="layout/head" /}
+</head>
+<body>
+    {:widget('index/header')}
+    <div class="ibanner"></div>
+    <div class="wp">
+        <div class="w1188 mt25 cl">
+            <ul class="product_box">
+                {foreach $cate->articles as $article}
+                <li class="cl">
+                    <a class="thumbnail" href="{:url('news.item', 'cateId='.$article.category_id.'&id='.$article.id)}" target="_blank">
+                    <img src="{$article.image}" alt="{$article.title}">
+                    </a>
+                    <h4>
+                     <a class="thumbnail" href="{:url('news.item', 'cateId='.$article.category_id.'&id='.$article.id)}" target="_blank">
+                        {$article.title}
+                    </a>
+                    </h4>
+                </li>
+                {/foreach}
+            </ul>    
+            <div class="default-pc-page page cl">
+                {$cate->articles->render()|raw}
+            </div>        
+        </div>
+    </div>
+    {:widget('index/footer')}
+</body>
+</html>

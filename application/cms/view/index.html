@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{:site_config('title')}</title>
+    <meta name="Keywords" content="{:site_config('keywords')}">
+    <meta name="Description" content="{:site_config('description')}">
+    {include file="layout/head" /}
+</head>
+<body>
+    {:widget('index/header')}
+    <!--banner-->
+
+    <div class="global_banner default-slider-2 default-slider-direction-left default-slider-single default-slider-effect-fadeIn ">
+        <div class="default-slider-box ">
+          <!-- Swiper -->
+            <div class="swiper-container ">
+                <div class="swiper-wrapper ">
+                    {foreach $banners as $banner}
+                    <div class="swiper-slide "><a href="{$banner.link} " target="{$banner.target}"><img src="{$banner.image} "></a></div>
+                    {/foreach}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination "></div>
+            </div>
+        </div>
+    </div>
+    <div class="wp ">
+        <!--business-->
+        <div class="w_business_title cl ">
+            <span class="z">产品展示</span>Product Center
+            <a class="y" href="{:url('product')}" target="_blank"><img src="/static/images/more.png " width="47px" height="14px" alt="查看更多"></a>
+        </div>
+        <ul class="w_business_list cl ">
+            {foreach $casesList as $key => $article}
+            <li {if ($key + 1) % 4 == 0 }class="nomg" {/if}>
+                <p class="w_b_img "><a href="{:url('product.item', 'cateId='.$article.category_id.'&id='.$article.id)}" target="_blank"><img src="{$article.image}"></a>
+                </p>
+                <p class="w_b_title"><a href="{:url('product.item', 'cateId='.$article.category_id.'&id='.$article.id)}" target="_blank ">{$article.title}</a></p>
+                <p class="w_b_msg ">{$article.summary_text}</p>
+                <p class="w_b_more "><a href="{:url('product.item', 'cateId='.$article.category_id.'&id='.$article.id)}" target="_blank"></a>
+                </p>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+        <!--company and news-->
+    <div class="w_cnbg">
+        <div class="wp cl">
+            <!--company-->
+            <div class="w_company z">
+                <div class="w_business_title cl">
+                    <span class="z">公司简介</span>company_show
+                </div>
+                <div class="w_company_msg">
+                    <p><a href="{:url('about')}" target="_blank "><img src="/static/images/intro.png " width="350 " height="110 "></a></p>
+                <p class="w_msg ">{$about.summary_text}</p>
+                <p class="w_company_more "><a href="{:url('about')}" target="_blank">查看详细</a>
+                    </p>
+                </div>
+            </div>
+            <!--news-->
+            <div class="w_news y">
+                <div class="w_business_title cl">
+                    <span class="z">新闻中心</span>News Center
+                    <a class="y" href="{:url('news')}" target="_blank "><img src="/static/images/more.png" width="47" height="14" alt="查看更多新闻中心 "></a>
+            </div>
+            <ul>
+                {foreach $newsList as $key => $news}
+                    {if $key == 0}
+                    <li class="w_topnews cl ">
+                        <div class="w_news_simg z ">
+                            <a href="{:url('news.item', 'cateId='.$news.category_id.'&id='.$news.id)}">
+                                <img src="{$news.image}" width="84" height="84">
+                            </a>
+                        </div>
+                        <div>
+                            <p class="w_news_title">
+                                <a href="{:url('news.item', 'cateId='.$news.category_id.'&id='.$news.id)}">{$news.title}</a>
+                            </p>
+                            <p>{$news.updated_at}</p>
+                            <p>{$news.summary_text}</p>
+                        </div>
+                    </li>
+                    {else}
+                    <li>
+                        <a class="cl" href="{:url('news.item', 'cateId='.$news.category_id.'&id='.$news.id)}">{$news.title}<span class="y">{$news.updated_at}</span></a>
+                    {/if} 
+                {/foreach}
+                </ul>
+                </div>
+            </div>
+        </div>
+        <!--friendly links-->
+        <div class="wp">
+            <div class="w_business_title cl">
+                <span class="z">友情链接</span>frd_link
+            </div>
+            <div class="w_frd_links default-slider-2 default-slider-direction-left">
+                <div class="default-slider-box">
+                    <ul class="cl">
+                        {foreach $friendLink as $link}
+                        <li><a href="{$link.link}" target="_blank" title="{$link.title}"><img src="{$link.image}"  width="150" height="40"></a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {:widget('index/footer')}
+    <script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js "></script>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+    </script>
+</body>
+
+</html>

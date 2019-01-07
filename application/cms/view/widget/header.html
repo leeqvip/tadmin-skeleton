@@ -1,0 +1,26 @@
+    <!--head-->
+    <div class="w_head">
+        <div class="wp cl">
+            <div class="w_logo z"><a href="/"><img src="/static/images/logo.png" height="66px" alt="演示站 "></a></div>
+            <ul class="default-pc-nav-menu w_nav y cl cl ">
+                {foreach $topNavs as $nav}
+                <li>
+                    <a href="{$nav.uri} " target="{$nav.target} ">
+                        <span>{$nav.title}</span>                        
+                    </a>
+                    {if isset($nav.children)}
+                    <ul>
+                        {foreach $nav.children as $childrenNav}
+                        <li>
+                            <a href="{$childrenNav.uri} " target="{$childrenNav.target} ">
+                                <span>{$childrenNav.title}</span>
+                            </a>
+                        </li>                
+                        {/foreach}
+                    </ul>
+                    {/if}
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
