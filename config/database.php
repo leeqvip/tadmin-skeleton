@@ -18,9 +18,9 @@ return [
     // 数据库名
     'database' => 'tadmin-skeleton',
     // 用户名
-    'username' => 'root',
+    'username' => Env::get('database.username'),
     // 密码
-    'password' => 'abc-123',
+    'password' => Env::get('database.password'),
     // 端口
     'hostport' => '',
     // 连接dsn
