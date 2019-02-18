@@ -38,4 +38,9 @@ class Product
             'article' => $article,
         ]);
     }
+
+    private function cates()
+    {
+        return $this->category->where('parent_id', 2)->order('sort', 'desc')->select();
+    }
 }
