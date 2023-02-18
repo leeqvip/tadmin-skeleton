@@ -1,27 +1,46 @@
 {
-    "name": "techone/tadmin-skeleton",
-    "description": "the new tadmin framework",
+    "name": "leeqvip/tadmin-skeleton",
+    "description": "the skeleton for tadmin",
     "type": "project",
     "keywords": [
         "tadmin",
-        "framework",
+        "php",
         "cms"
     ],
+    "homepage": "https://github.com/leeqvip/tadmin",
     "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "TechLee",
+            "email": "techlee@qq.com"
+        }
+    ],
     "require": {
-        "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
-        "techone/tadmin": ">=0.5"
+        "php": ">=7.2.5",
+        "topthink/framework": "^6.1.0",
+        "topthink/think-orm": "^2.0",
+        "topthink/think-filesystem": "^1.0",
+        "leeqvip/tadmin": "^1.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2",
+        "topthink/think-trace": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "application"
+            "app\\": "app"
+        },
+        "psr-0": {
+            "": "extend/"
         }
-    },
-    "extra": {
-        "think-path": "thinkphp"
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php think service:discover",
+            "@php think vendor:publish"
+        ]
     }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>关于我们 - {:site_config('title')}</title>
+    <meta name="Keywords" content="{:site_config('keywords')}">
+    <meta name="Description" content="{:site_config('description')}">
+    {include file="layout/head" /}
+</head>
+<body>
+    {include file="widget/header")}
+    <div class="ibanner"></div>
+    <div class="wp">
+        <div class="w1188 mt25 cl">
+            <dl class="default-pc-sidebar-dl ">
+                <dt>
+                    关于我们<span>About us</span>
+                </dt>
+                {foreach $leftCates as $row}
+                <dd {if $cate.id == $row.id}class="a"{/if}><a href="{:url('about', ['id' => $row.id])}">{$row.name}</a></dd>
+                {/foreach}
+            </dl>    
+            <div class="cbox right">      
+                <div class="page_box">
+                    <div class="title cl">
+                        <span class="tname left">{$cate.single.title}</span>
+                        <span class="tmore right">
+                            当前位置：<a href="/">网站首页</a> &gt;<a href="">{$cate.name}</a>
+                        </span>
+                    </div>
+                    <div class="page_content">
+                        <div class="default-article-content">{$cate.single.content|raw}</div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    {include file="widget/footer")}
+</body>
+</html>
