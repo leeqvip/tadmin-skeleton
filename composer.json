@@ -1,26 +1,26 @@
 {
     "name": "leeqvip/tadmin-skeleton",
-    "description": "the skeleton for tadmin",
+    "description": "the new thinkphp framework",
     "type": "project",
     "keywords": [
-        "tadmin",
-        "php",
-        "cms"
+        "framework",
+        "thinkphp",
+        "ORM"
     ],
     "homepage": "https://github.com/leeqvip/tadmin",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "TechLee",
-            "email": "techlee@qq.com"
+            "name": "JonLee",
+            "email": "leeqvip@gmail.com"
         }
     ],
     "require": {
-        "php": ">=7.2.5",
-        "topthink/framework": "^6.1.0",
-        "topthink/think-orm": "^2.0",
-        "topthink/think-filesystem": "^1.0",
-        "leeqvip/tadmin": "^1.0"
+        "php": ">=8.0.0",
+        "topthink/framework": "^8.0",
+        "topthink/think-orm": "^3.0",
+        "topthink/think-filesystem": "^2.0",
+        "leeqvip/tadmin": "^1.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
